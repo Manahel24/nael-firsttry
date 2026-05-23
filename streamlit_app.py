@@ -6,36 +6,17 @@ st.write(
 )
 st.title("HELLO NEWBIE")
 st.title("THIS IS YOUR TIME :blue[cool] :sunglasses:")
-def authenticated_menu():
-    # Show a navigation menu for authenticated users
-    st.sidebar.page_link("app.py", label="Switch accounts")
-    st.sidebar.page_link("pages/user.py", label="Your profile")
-    if st.session_state.role in ["admin", "super-admin"]:
-        st.sidebar.page_link("pages/admin.py", label="Manage users")
-        st.sidebar.page_link(
-            "pages/super-admin.py",
-            label="Manage admin access",
-            disabled=st.session_state.role != "super-admin",
-        )
 
+# app.py — baris 13
+st.set_page_config(
+  page_title="Finance Dashboard",
+  layout="wide"
+)
 
-def unauthenticated_menu():
-    # Show a navigation menu for unauthenticated users
-    st.sidebar.page_link("app.py", label="Log in")
+# Hirarki teks
+st.title("📊 Dashboard")
+st.header("Laporan Bulanan")
+st.subheader("📈 Monthly Expenses")
+st.caption("Made with ❤️ using Streamlit")
 
-
-def menu():
-    # Determine if a user is logged in or not, then show the correct
-    # navigation menu
-    if "role" not in st.session_state or st.session_state.role is None:
-        unauthenticated_menu()
-        return
-    authenticated_menu()
-
-
-def menu_with_redirect():
-    # Redirect users to the main page if not logged in, otherwise continue to
-    # render the navigation menu
-    if "role" not in st.session_state or st.session_state.role is None:
-        st.switch_page("app.py")
-    menu()
+    
